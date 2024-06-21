@@ -16,10 +16,10 @@ print(f"--debug - Database total changes: {connection.total_changes}")
 class Assistant:
 
     def __init__(self):
+        # Initialisation
         self.recogniser = speech_recognition.Recognizer()
         self.speaker = tts.init()
         self.speaker.setProperty("rate", speechRate)
-
         self.assistant = GenericAssistant("intents.json", 
                                           intent_methods={
                                               "Todo List": self.createTodo})
@@ -29,9 +29,37 @@ class Assistant:
         cursor.execute("CREATE TABLE IF NOT EXISTS notification (id INTEGER PRIMARY KEY, timestamp DATETIME, duedate DATETIME, name TEXT, details TEXT, priority INTEGER)")
         
         self.assistant.train_model()
+        
+        threading.Thread(target=self.runAssistant).start()
 
     def createTodo(self):
         pass
+
+    def runAssistant(self):
+        while True:
+            try:
+                with speech_recognition.Microphone() as mic:
+                    self.recogniser.adjust_for_ambient_noise(mic, duration=0.2)
+                    audio = self.recogniser.listen(mic)#
+
+                    text = self.recogniser.recognize_google_cloud(audio)
+                    text.lower()
+
+                    # The 'wake' option of choice
+                    if "wmpya" or "doc" or "chief" or "wim-pee-ya" or "wim pee ya" in text:
+                        audio = self.recogniser.listen(mic)
+                        text = self.recogniser.recognize_google_cloud(audio)
+                        text.lower()
+                        if text == "thank you":
+                            self.speaker.say("See you around!")
+                            self.speaker.runAndWait()
+                            self.speaker.stop()
+                            sys.exit()
+                        else:
+                            if text is not None:
+                                response = self.assistant.request(text)
+                                if response is not None:
+                                    self.speaker.say(response)
 
 # Further / automatic responses
 # Search Querying

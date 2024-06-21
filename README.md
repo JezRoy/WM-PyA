@@ -19,4 +19,4 @@ Using a connected microphone and/or earpiece, speak to the voice assistant, and 
 
 # How to use...
 1. Ensure Python 3.11.x (minimum) and `pip` for this python version is installed.
-2. Run `installer.py`
+2. Run `installer.py` to ensure all necessary python frameworks and modules are readily available.
