@@ -18,3 +18,5 @@ Desired functionalities:
 Using a connected microphone and/or earpiece, speak to the voice assistant, and recieve audio and visual feedback! It is targetted to behave like JARVIS, helping you manage, organise, or create, or even just give you general information.
 
 # How to use...
+1. Ensure Python 3.11.x (minimum) and `pip` for this python version is installed.
+2. Run `installer.py`
