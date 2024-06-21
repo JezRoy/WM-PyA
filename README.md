@@ -8,7 +8,7 @@ Desired functionalities:
 - General Internet (Search) Querying - **MUST**
 - General Internet (Trained GPT) Querying - ***Should***
 - Controlling Music - **MUST**
-- Navigation Assistance - **MUST**
+- Map Navigation Assistance - **MUST**
 - Alerts & Notification - **MUST**
 - Weather Updates - ***Should***
 - Language Translation - ***Should***

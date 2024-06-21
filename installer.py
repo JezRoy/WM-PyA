@@ -8,6 +8,7 @@ requiredModules = [
     'os',
     'sys',
     'pandas',
+    'sqlite3',
     'numpy',
     'datetime',
     'functools',
