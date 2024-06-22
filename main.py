@@ -50,7 +50,7 @@ class Assistant:
                         audio = self.recogniser.listen(mic)
                         text = self.recogniser.recognize_google_cloud(audio)
                         text.lower()
-                        if text == "thank you":
+                        if text == "thank you" or text == "shut down":
                             self.speaker.say("See you around!")
                             self.speaker.runAndWait()
                             self.speaker.stop()
@@ -60,14 +60,20 @@ class Assistant:
                                 response = self.assistant.request(text)
                                 if response is not None:
                                     self.speaker.say(response)
+                                    self.speaker.runAndWait()
+            except:
+                continue
 
-# Further / automatic responses
-# Search Querying
+    # Further / automatic responses
+    # Search Querying
 
-# Music Control
+    # Music Control
 
-# Todo List
+    # Todo List
 
-# Navigation
+    # Navigation
 
-# Notifications
+    # Notifications
+
+
+Assistant()
